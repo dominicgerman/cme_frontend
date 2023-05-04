@@ -3,18 +3,218 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<link rel="stylesheet" href="%sveltekit.assets%/global.css" />
 		<meta name="viewport" content="width=device-width" />
 
 		<!-- Google fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@500;700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600&display=swap"
 			rel="stylesheet"
 		/>
+		<title>Constellation Men's Ensemble</title>
 
 		%sveltekit.head%
+
+		<style>
+			body {
+				--dark-blue: #1b2233;
+				--light-blue: hsl(211, 30%, 46%);
+				--white: #ffffff;
+				--off-white: #e0e6eb;
+				--black: #1f1f1f;
+				--font: 'Raleway', sans-serif;
+				--font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas,
+					'DejaVu Sans Mono', monospace;
+				--link: var(--off-white);
+				--link-hover: var(--white);
+				--border-radius: 4px;
+
+				/* font-size: 62.5%; */
+				font-family: var(--font);
+				background-color: var(--dark-blue);
+				color: var(--off-white);
+				height: calc(100vh - 2rem);
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-weight: normal;
+				font-variant-numeric: tabular-nums;
+				line-height: 1.1;
+			}
+
+			:is(h1, h2, h3, h4, h5, h6, p) {
+				margin: 1rem 0.1rem;
+			}
+
+			label {
+				margin: 0.5rem 0.1rem;
+			}
+
+			:is(h1, h2, h3, h4, h5, h6, p, label):first-child {
+				margin-top: 0;
+			}
+
+			:is(h1, h2, h3, h4, h5, h6, p, label):last-child {
+				margin-bottom: 0;
+			}
+
+			a {
+				color: var(--link);
+			}
+
+			a:hover {
+				color: var(--link-hover);
+			}
+
+			label {
+				display: flex;
+				gap: 0.5rem;
+				align-items: center;
+			}
+
+			label input {
+				margin: 0;
+			}
+
+			button,
+			input,
+			select {
+				font-family: inherit;
+				font-size: inherit;
+			}
+
+			button {
+				background: var(--link);
+				color: var(--white);
+				padding: 0.5rem 1rem;
+				border: none;
+				border-radius: var(--border-radius);
+			}
+
+			button:hover {
+				background: var(--link-hover);
+			}
+
+			:is(button, button:hover, button:active):disabled {
+				background: var(--link);
+				filter: grayscale(1);
+				opacity: 0.4;
+			}
+
+			input,
+			textarea,
+			select {
+				padding: 0.5rem;
+				border: 1px solid var(--off-white);
+				border-radius: var(--border-radius);
+				box-sizing: border-box;
+			}
+
+			input,
+			textarea {
+				background: var(--white);
+			}
+
+			select:not([multiple]) {
+				background: var(--off-white);
+			}
+
+			textarea {
+				font-family: var(--font-mono);
+				font-size: 0.9rem;
+			}
+
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				align-items: baseline;
+			}
+
+			ul:has(li):has(form) {
+				list-style: none;
+				padding: 0;
+			}
+
+			li form {
+				flex-direction: row;
+				gap: 0.5rem;
+				margin: 0.5rem 0;
+			}
+
+			header {
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 1em 2em;
+				background: var(--light-blue);
+				z-index: 2;
+				margin: 0 0 1em 0;
+				border-radius: var(--border-radius);
+			}
+
+			nav {
+				display: flex;
+				align-items: center;
+				gap: 1em;
+			}
+
+			nav a {
+				text-decoration: none;
+				font-size: 20px;
+			}
+
+			nav a[aria-current='true'] {
+				border-bottom: 2px solid;
+			}
+
+			ul:has(form) {
+				list-style: none;
+				padding: 0;
+			}
+
+			progress {
+				margin: 0.5rem 0;
+			}
+
+			progress:first-child {
+				margin-top: 0;
+			}
+
+			progress:lsat-child {
+				margin-bottom: 0;
+			}
+
+			.error {
+				color: red;
+			}
+
+			code {
+				background: var(--off-white);
+				font-family: var(--font-mono);
+				font-size: 0.9em;
+				padding: 0.15rem 0.3rem;
+				border-radius: var(--border-radius);
+			}
+
+			.home {
+				display: flex;
+				align-items: center;
+				gap: 1.4em;
+			}
+
+			.home a {
+				text-decoration: none;
+				font-size: 2em;
+			}
+		</style>
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>

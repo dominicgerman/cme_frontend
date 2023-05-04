@@ -15,6 +15,21 @@ export const client = createClient({
 	useCdn: false, // `false` if you want to ensure fresh data
 	apiVersion: '2023-03-20' // date of setup
 });
+// /////////////// CONCERTS //////////////// //
+
+export async function getConcerts() {
+	return await client.fetch(
+		groq`*[_type == "concert" && defined(slug.current)] | order(_createdAt desc)`
+	);
+}
+
+export async function getConcert(slug: string) {
+	return await client.fetch(groq`*[_type == "concert" && slug.current == $slug][0]`, {
+		slug
+	});
+}
+
+// /////////////// POSTS //////////////// //
 
 export async function getPosts(): Promise<Post[]> {
 	return await client.fetch(
