@@ -10,7 +10,9 @@
 		<a href="/about">About</a>
 		<a href="/listen">Listen</a>
 		<a href="/support">Support</a>
-		<button>Give</button>
+		<a href="https://interland3.donorperfect.net/weblink/weblink.aspx?name=E353170&id=17" target="_blank">
+		<button>Give</button>	
+		</a>
 	</nav>		
 </header>
 <main>

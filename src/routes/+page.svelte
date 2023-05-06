@@ -1,17 +1,30 @@
 <script lang="ts">
-	// import Card from '../components/Card.svelte';
-	import Welcome from '../components/Welcome.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 </script>
 
 <section>
-	<!-- {#if data.posts.length} -->
-		<!-- {#each data.posts as post} -->
-			<!-- <Card {post} /> -->
-		<!-- {/each} -->
-	<!-- {:else} -->
-		<Welcome />
-	<!-- {/if} -->
+	{#if data.pages.length}
+	<h1>These are all the generic pages</h1>
+		{#each data.pages as page}
+		<h2>
+			<a href={`/${page.parentRoute}/${page.slug.current}`}>
+				{page.title}
+			</a>
+		</h2>
+		{/each}
+	{:else}
+		<h1>You fucked up</h1>
+	{/if}
 </section>
+
+<style>
+	h1 {
+		font-size: 3rem;
+	}
+
+	h2 {
+		margin: 1rem;
+	}
+</style>
