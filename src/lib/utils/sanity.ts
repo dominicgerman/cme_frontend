@@ -15,6 +15,7 @@ export const client = createClient({
 	useCdn: false, // `false` if you want to ensure fresh data
 	apiVersion: '2023-03-20' // date of setup
 });
+
 // /////////////// CONCERTS //////////////// //
 
 export async function getConcerts() {
@@ -27,6 +28,66 @@ export async function getConcert(slug: string) {
 	return await client.fetch(groq`*[_type == "concert" && slug.current == $slug][0]`, {
 		slug
 	});
+}
+
+export interface Concert {
+	_type: 'concert';
+	_createdAt: string;
+	title?: string;
+	slug: Slug;
+	mainImage?: ImageAsset;
+	description: PortableTextBlock[];
+	performance1: object;
+	performance2: object;
+}
+
+// /////////////// ARTISTS //////////////// //
+
+export async function getArtists() {
+	return await client.fetch(
+		groq`*[_type == "artist" && defined(slug.current)] | order(_createdAt desc)`
+	);
+}
+
+export async function getArtist(slug: string) {
+	return await client.fetch(groq`*[_type == "artist" && slug.current == $slug][0]`, {
+		slug
+	});
+}
+
+export interface Artist {
+	_type: 'artist';
+	_createdAt: string;
+	name: string;
+	role: string;
+	mainImage?: ImageAsset;
+	slug: Slug;
+	bio: PortableTextBlock[];
+	voicePart: string;
+}
+
+// /////////////// PAGES //////////////// //
+
+export async function getPages() {
+	return await client.fetch(
+		groq`*[_type == "genericPage" && defined(slug.current)] | order(_createdAt desc)`
+	);
+}
+
+export async function getPage(slug: string) {
+	return await client.fetch(groq`*[_type == "genericPage" && slug.current == $slug][0]`, {
+		slug
+	});
+}
+
+export interface Page {
+	_type: 'genericPage';
+	_createdAt: string;
+	title: string;
+	slug: Slug;
+	content: PortableTextBlock[];
+	mainImage?: ImageAsset;
+	parentRoute: string;
 }
 
 // /////////////// POSTS //////////////// //

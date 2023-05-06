@@ -1,31 +1,33 @@
 <script lang="ts">
-	import { formatDate } from '$lib/utils';
+	import { PortableText } from '@portabletext/svelte';
 	import { urlFor } from '$lib/utils/image';
-	import type { Post } from '$lib/utils/sanity';
+	import type { Artist } from '$lib/utils/sanity';
 
-	export let post: Post;
+	export let artist: Artist;
 </script>
 
-<div class="card">
-	{#if post.mainImage}
+<div>
+	{#if artist.mainImage}
 		<img
-			class="card__cover"
-			src={urlFor(post.mainImage).width(500).height(300).url()}
-			alt="Cover image for {post.title}"
+			src={urlFor(artist.mainImage).width(300).height(300).url()}
+			alt="Cover image for {artist.name}"
 		/>
 	{:else}
-		<div class="card__cover--none" />
+		null
 	{/if}
 
-	<div class="card__container">
-		<h3 class="card__title">
-			<a class="card__link" href={`/post/${post.slug.current}`}>
-				{post.title}
+	<div>
+		<h3>
+			<a href={`/about/singers/${artist.slug.current}`}>
+				{artist.name},
 			</a>
+			{artist.voicePart}
 		</h3>
-		<p class="card__excerpt">{post.excerpt}</p>
-		<p class="card__date">
-			{formatDate(post._createdAt)}
-		</p>
 	</div>
 </div>
+
+<style>
+	h3 {
+		margin-bottom: 2rem;
+	}
+</style>

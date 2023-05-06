@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { PortableText } from '@portabletext/svelte';
 	import { urlFor } from '$lib/utils/image';
-	import type { PageData } from './$types';
+	import type {Page} from '$lib/utils/sanity'
 
-	export let data: PageData;
+	export let data: Page;
 </script>
 
 <section>
@@ -14,10 +14,7 @@
 			height="300px"
 		/>	
     {/if}
-	<div>
-		<h1>{data.title}</h1>
-		<div>
-			<PortableText value={data.description} />
-		</div>
-	</div>
+	<h1>{data.title}</h1>
+    <PortableText value={data.content} />
+
 </section>
