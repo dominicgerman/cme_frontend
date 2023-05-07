@@ -5,8 +5,8 @@ import { getSinger } from '$lib/utils/sanity';
 export const ssr = false;
 
 export const load = (async ({ params }) => {
-	const artist = await getSinger(params.slug);
-	if (artist) return artist;
+	const singer = await getSinger(params.slug);
+	if (singer) return singer;
 
 	throw error(404, 'Not found');
 }) satisfies PageLoad;

@@ -16,7 +16,7 @@ export const client = createClient({
 	apiVersion: '2023-03-20' // date of setup
 });
 
-// /////////////// PAGES //////////////// //
+// /////////////// ALL PAGES //////////////// //
 
 export async function getPages() {
 	return await client.fetch(
@@ -28,6 +28,28 @@ export async function getPage(slug: string) {
 	return await client.fetch(groq`*[_type == "genericPage" && slug.current == $slug][0]`, {
 		slug
 	});
+}
+
+// /////////////// ABOUT //////////////// //
+
+export async function getAboutPages() {
+	return await client.fetch(
+		groq`*[_type == "genericPage" && parentRoute == "about" && defined(slug.current)] | order(_createdAt desc)`
+	);
+}
+// /////////////// LISTEN //////////////// //
+
+export async function getListenPages() {
+	return await client.fetch(
+		groq`*[_type == "genericPage" && parentRoute == "listen" && defined(slug.current)] | order(_createdAt desc)`
+	);
+}
+// /////////////// SUPPORT //////////////// //
+
+export async function getSupportPages() {
+	return await client.fetch(
+		groq`*[_type == "genericPage" && parentRoute == "support" && defined(slug.current)] | order(_createdAt desc)`
+	);
 }
 
 export interface Page {
