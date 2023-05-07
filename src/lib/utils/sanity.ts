@@ -40,18 +40,38 @@ export interface Page {
 	parentRoute: string;
 }
 
-// /////////////// ARTISTS //////////////// //
+// /////////////// SINGERS //////////////// //
 
-export async function getArtists() {
+export async function getSingers() {
 	return await client.fetch(
-		groq`*[_type == "artist" && defined(slug.current)] | order(_createdAt desc)`
+		groq`*[_type == "artist" && role == "singer" && defined(slug.current)] | order(_createdAt desc)`
 	);
 }
 
-export async function getArtist(slug: string) {
-	return await client.fetch(groq`*[_type == "artist" && slug.current == $slug][0]`, {
-		slug
-	});
+export async function getSinger(slug: string) {
+	return await client.fetch(
+		groq`*[_type == "artist" && role == "singer" && slug.current == $slug][0]`,
+		{
+			slug
+		}
+	);
+}
+
+// /////////////// COMPOSERS //////////////// //
+
+export async function getComposers() {
+	return await client.fetch(
+		groq`*[_type == "artist" && role == "composer" && defined(slug.current)] | order(_createdAt desc)`
+	);
+}
+
+export async function getComposer(slug: string) {
+	return await client.fetch(
+		groq`*[_type == "artist" && role == "composer" && slug.current == $slug][0]`,
+		{
+			slug
+		}
+	);
 }
 
 export interface Artist {

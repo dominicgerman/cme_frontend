@@ -1,13 +1,13 @@
-import { getSingers } from '$lib/utils/sanity';
+import { getComposers } from '$lib/utils/sanity';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
 export const load = (async () => {
-	const singers = await getSingers();
+	const composers = await getComposers();
 
-	if (singers) {
+	if (composers) {
 		return {
-			singers
+			composers
 		};
 	}
 

@@ -12,8 +12,8 @@
     </strong>    
     </h1>
     <div>
-        {#if data.artists.length}
-        {#each data.artists as artist}
+        {#if data.singers.length}
+        {#each data.singers as artist}
         <Card {artist} />           
         {/each}        
         {/if}
