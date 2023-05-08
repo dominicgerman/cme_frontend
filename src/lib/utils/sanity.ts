@@ -131,3 +131,28 @@ export interface Concert {
 	performance1: object;
 	performance2: object;
 }
+
+// /////////////// AUDIO TRACKS //////////////// //
+
+export async function getAudioTracks() {
+	return await client.fetch(
+		groq`*[_type == "audio" && defined(slug.current)] {
+			title,
+			composer,
+			"audioURL": audioFile.asset->url
+		} | order(_createdAt desc)`
+	);
+}
+
+export async function getAudioTrack(slug: string) {
+	return await client.fetch(
+		groq`*[_type == "audio" && slug.current == $slug][0] {
+			title,
+			composer,
+			"audioURL": audioFile.asset->url
+		}`,
+		{
+			slug
+		}
+	);
+}
