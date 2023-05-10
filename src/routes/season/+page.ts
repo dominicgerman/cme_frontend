@@ -1,12 +1,14 @@
-import { getConcerts } from '$lib/utils/sanity';
+import { getConcerts, getPage } from '$lib/utils/sanity';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
 export const load = (async () => {
+	const page = await getPage('season');
 	const concerts = await getConcerts();
 
-	if (concerts) {
+	if (page && concerts) {
 		return {
+			page,
 			concerts
 		};
 	}

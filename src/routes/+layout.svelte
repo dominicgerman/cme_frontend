@@ -6,7 +6,7 @@
 		<a href="/">Constellation Men's Ensemble</a>
 	</div>
 	<nav>
-		<a href="/concerts">Concerts</a>
+		<a href="/season">Season</a>
 		<a href="/about">About</a>
 		<a href="/listen">Listen</a>
 		<a href="/support">Support</a>
