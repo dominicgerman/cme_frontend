@@ -3,7 +3,6 @@
     import AudioPlayer from '../../../components/AudioPlayer.svelte';
 
 	export let data: PageData;
-    $: console.log(data)
 </script>
 
 <section>

@@ -57,7 +57,10 @@ export interface Page {
 	_createdAt: string;
 	title: string;
 	slug: Slug;
-	content: PortableTextBlock[];
+	content: {
+		blockText: PortableTextBlock[];
+		blockImage: ImageAsset;
+	}[];
 	mainImage?: ImageAsset;
 	parentRoute: string;
 }
@@ -128,8 +131,16 @@ export interface Concert {
 	slug: Slug;
 	mainImage?: ImageAsset;
 	description: PortableTextBlock[];
-	performance1: object;
-	performance2: object;
+	performance1: {
+		dateTime: string;
+		ticketsLink: string;
+		venue: string;
+	};
+	performance2: {
+		dateTime: string;
+		ticketsLink: string;
+		venue: string;
+	};
 }
 
 // /////////////// AUDIO TRACKS //////////////// //

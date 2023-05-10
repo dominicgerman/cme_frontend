@@ -4,7 +4,6 @@
     import { PortableText } from '@portabletext/svelte';
 
     export let data: PageData;
-    $: console.log(data)
 </script>
 
 <section>

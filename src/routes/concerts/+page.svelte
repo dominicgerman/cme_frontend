@@ -8,7 +8,7 @@
 	{#if data.concerts.length}
 		{#each data.concerts as concert}
         <a href={`/concerts/${concert.slug.current}`}>
-            <h1>{concert.title}</h1>
+            <h3>{concert.title}</h3>
         </a>
 		{/each}
 	{:else}

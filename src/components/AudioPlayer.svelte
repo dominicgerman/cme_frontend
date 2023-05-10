@@ -45,7 +45,7 @@
 				class="slider"
 				on:pointerdown={e => {
 					const div = e.currentTarget;
-					
+					// @ts-ignore
 					function seek(e) {
 						const { left, width } = div.getBoundingClientRect();
 
